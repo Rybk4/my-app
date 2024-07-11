@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-
+import { View,SafeAreaView  } from 'react-native';
 import icons from '../constants/icons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-   
+    
     <Tab.Navigator 
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -24,15 +24,27 @@ export default function App() {
           },
           tabBarActiveTintColor: 'red',
           tabBarInactiveTintColor: 'black',
+          tabBarLabelStyle: {
+            paddingBottom: 5, 
+          },
+          tabBarIconStyle: {
+            paddingTop: 5,
+          },
+          tabBarStyle: {
+            paddingTop: 5, 
+            paddingBottom: 5, 
+            height: 60, 
+          },
         })}
+        
     >
        
-        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: 'Главная' }} /> 
+        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: 'Главная' , title:"Главная" , headerStyle:{ } }} /> 
         
-        <Tab.Screen name="Qr" component={SettingsScreen} options={{ tabBarLabel: 'App-Qr' }} />
-        <Tab.Screen name="Notifications" component={ProfileScreen} options={{ tabBarLabel: 'Сообщения' }} />
-        <Tab.Screen name="Servise" component={NotificationsScreen} options={{ tabBarLabel: 'Сервисы' }} />
+        <Tab.Screen name="Qr" component={SettingsScreen} options={{ tabBarLabel: 'App-Qr' , title:"Главная"}} />
+        <Tab.Screen name="Notifications" component={ProfileScreen} options={{ tabBarLabel: 'Сообщения' , title:"Сообщения" }} />
+        <Tab.Screen name="Servise" component={NotificationsScreen} options={{ tabBarLabel: 'Сервисы' , title:"Сервисы"}} />
       </Tab.Navigator>
-   
+     
   );
 }
