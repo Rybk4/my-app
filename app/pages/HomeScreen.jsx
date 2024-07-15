@@ -1,15 +1,26 @@
 import React from 'react';
-import { View,Text ,Dimensions ,StyleSheet} from 'react-native';
+import { View,Text ,Dimensions ,StyleSheet , ScrollView } from 'react-native';
  
 import CarouselCont from '../components/CarouselCont';
+
+import ButtonsSection from '../components/ButtonsSection';
+
+import RecomendSection from '../components/RecomendSection';
+
+import Separator from '../components/Separator';
+
+
 const width = Dimensions.get('window').width;
 const HomeScreen = () => {
   return (
-    <View style={styles.container} >
-      
-      <CarouselCont/>
-    
-    </View>
+    <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <CarouselCont />
+        <ButtonsSection />
+        <Separator/>
+        <RecomendSection />
+      </View>
+    </ScrollView>
     
   );
    
@@ -25,7 +36,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     backgroundColor: '#ffffff',
     justifyContent: 'center',
-     
+    
+  },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: '#ffffff',
   },
  
 });
