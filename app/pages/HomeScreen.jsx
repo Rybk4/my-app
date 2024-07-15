@@ -5,9 +5,12 @@ import CarouselCont from '../components/CarouselCont';
 const width = Dimensions.get('window').width;
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} >
+      
       <CarouselCont/>
+    
     </View>
+    
   );
    
 };
@@ -19,8 +22,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     borderTopColor: 'black',
-    borderWidth: 1,
+    borderTopWidth: 1,
     backgroundColor: '#ffffff',
-
+    justifyContent: 'center',
+     
   },
+ 
 });
