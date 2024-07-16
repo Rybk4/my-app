@@ -4,7 +4,7 @@ import * as React from 'react';
 import icons from '../constants/icons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Image, StatusBar,View} from 'react-native';
+import { Image, StatusBar,View , SafeAreaView } from 'react-native';
 
 import HomeScreen from './pages/HomeScreen';
 import ServiceScreen from './pages/ServiceScreen';
@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={{flex:1,  }}>
+    <SafeAreaView  style={{flex:1,  }}>
     <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
     
     <Tab.Navigator 
@@ -49,6 +49,6 @@ export default function App() {
         <Tab.Screen name="Servise" component={ServiceScreen} options={{ tabBarLabel: 'Сервисы' , title:"Сервисы"}} />
 
       </Tab.Navigator>
-    </View>
+    </SafeAreaView >
   );
 }

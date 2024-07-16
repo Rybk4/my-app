@@ -1,31 +1,37 @@
 import React from 'react';
-import { View,Text ,Dimensions ,StyleSheet , ScrollView } from 'react-native';
- 
+import { View, Text, Dimensions, StyleSheet, FlatList, Image } from 'react-native';
 import CarouselCont from '../components/CarouselCont';
-
 import ButtonsSection from '../components/ButtonsSection';
-
 import RecomendSection from '../components/RecomendSection';
 
-import Separator from '../components/Separator';
+ import Separator from '../components/Separator';
 
+const { width } = Dimensions.get('window');
 
-const width = Dimensions.get('window').width;
 const HomeScreen = () => {
-  return (
-    <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <CarouselCont />
-        <ButtonsSection />
-        <Separator/>
-        <RecomendSection />
-      </View>
-    </ScrollView>
-    
+  const sections = [
+    { key: 'carousel', content: <CarouselCont /> },
+    { key: 'buttons', content: <ButtonsSection /> },
+    { key: 'separator', content: <Separator /> },
+    { key: 'recommendations', content: <RecomendSection /> },
+  ];
+
+  const renderItem = ({ item }) => (
+    <View style={styles.sectionContainer}>
+      {item.content}
+    </View>
   );
-   
+
+  return (
+    <FlatList
+      data={sections}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.key}
+      style={styles.container}
+    />
+  );
 };
- 
+
 export default HomeScreen;
 
 const styles = StyleSheet.create({
@@ -35,12 +41,8 @@ const styles = StyleSheet.create({
     borderTopColor: 'black',
     borderTopWidth: 1,
     backgroundColor: '#ffffff',
-    justifyContent: 'center',
-    
   },
-  scrollContainer: {
-    flex: 1,
-    backgroundColor: '#ffffff',
+  sectionContainer: {
+    marginBottom: 10,
   },
- 
 });
